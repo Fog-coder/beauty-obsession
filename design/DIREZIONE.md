@@ -7,7 +7,7 @@ Sito completo del centro Beauty Obsession, con la qualità visiva e il movimento
 Ricerca in ../ricerca, processo PDF in ../docs. Analisi live delle dieci reference in evidenze-reference; codice delle due repo locali letto in sola lettura. Dai progetti A Center riprendiamo lo schema di una timeline centrale, il pin in ordine di pagina, il caricamento progressivo, la navigazione accessibile e lo scroll nativo su touch. Non copiamo contenuti, modelli, fotografie o marchi delle reference.
 
 ## Direzione
-Sito editoriale per un pubblico locale interessato a estetica e benessere. VARIANCE 9, MOTION 8, DENSITY 3. Avorio #F7EEE8, oro #A57E44, bruno #382A20: la famiglia cromatica viene dalla ricerca, non da un preset. Titoli Cormorant Garamond, corpo Manrope, font locali. Logo raster autentico, conservato senza ridisegno. Firma visiva: tipografia grande e sottile, bordi quasi invisibili, immagini a vivo, ritmi asimmetrici. Un unico sistema condiviso su quattro pagine.
+Sito editoriale per un pubblico locale interessato a estetica e benessere. VARIANCE 9, MOTION 8, DENSITY 3. Avorio #F7EEE8, oro #A57E44, bruno #382A20: la famiglia cromatica viene dalla ricerca, non da un preset. Titoli Cormorant Garamond, corpo Manrope, font locali. Logo ricostruito in SVG dal raster autentico, conservando lettering e ornamenti. Firma visiva: tipografia grande e sottile, bordi quasi invisibili, immagini a vivo, ritmi asimmetrici. Un unico sistema condiviso su quattro pagine.
 
 ## Architettura
 - /: copertina cinematica, manifesto, mondi dei trattamenti, specializzazione piedi, fiducia, invito.
