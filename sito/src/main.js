@@ -3,6 +3,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { CustomEase } from 'gsap/CustomEase';
 import Lenis from 'lenis';
 import { reviews } from './content.js';
+import { petalGeometry,petalPath } from './petal-reveal.js';
 
 gsap.registerPlugin(ScrollTrigger,CustomEase);
 const EASE=CustomEase.create('beauty','.22,1,.36,1');
@@ -72,11 +73,14 @@ function setupMotion(){
       let sceneRequested=false;
       const requestScene=()=>{
         if(sceneRequested||cancelled)return;sceneRequested=true;
-        // Touch uses the same cinematic iris composition without a GL startup.
+        // Touch uses a rounded petal mask without a GL startup.
         if(!fine()||innerWidth<768)return;
         import('./bloom.js').then(async({createBloom})=>{if(cancelled)return;let created;try{created=await createBloom(document.querySelector('#bloom-canvas'));}catch{return;}if(cancelled){created.dispose();return;}bloom=created;bloom.setProgress(state.progress);}).catch(()=>{});
       };
       const mobile=innerWidth<768;
+      const clipPath=progress=>mobile
+        ?petalPath(petalGeometry(hero.querySelector('.hero-stage'),hero.querySelector('.hero-poster')),progress)
+        :`circle(${progress*140}% at 72% 50%)`;
       const tl=gsap.timeline({defaults:{ease:'none'},scrollTrigger:{id:'bloom-story',trigger:hero,start:'top top',end:()=>`+=${innerHeight*(innerWidth<768?1.75:2.35)}`,pin:'.hero-stage',scrub:.65,anticipatePin:1,invalidateOnRefresh:true,onUpdate:st=>{if(st.progress>0)requestScene();const accessible=st.progress>.64;chapter.setAttribute('aria-hidden',String(!accessible));chapterLink.tabIndex=accessible?0:-1;}}});
       tl.to(state,{progress:1,duration:1,onUpdate:()=>bloom?.setProgress(state.progress)},0)
         .to('.hero-content',{y:-60,autoAlpha:0,duration:.14},.04)
@@ -85,7 +89,7 @@ function setupMotion(){
         .to('.hero-interlude',{scale:1.15,autoAlpha:0,duration:.12},.41)
         .fromTo(chapter,{y:50,autoAlpha:0},{y:0,autoAlpha:1,duration:.16},.65)
         .to('.hero-wash',{opacity:mobile?.9:.7,duration:.2},.55)
-        .fromTo('.hero-destination',{clipPath:'circle(0% at 72% 50%)'},{clipPath:'circle(140% at 72% 50%)',duration:.48},.32);
+        .fromTo('.hero-destination',{clipPath:()=>clipPath(0)},{clipPath:()=>clipPath(1),duration:.48},.32);
       // A meaningful visual fallback also works if WebGL is unavailable.
       tl.to('.hero-poster',{scale:1.22,rotation:4,duration:.8},0);
       if(scrollY<15){gsap.from('.hero-content h1 span,.hero-content h1 em',{y:45,duration:1.35,stagger:.11,clearProps:'all'});gsap.from('.hero-content>.eyebrow,.hero-bottom',{y:15,duration:1,delay:.2,stagger:.1,clearProps:'all'});gsap.from(art,{scale:1.035,duration:1.9,clearProps:'transform'});}

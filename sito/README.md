@@ -35,7 +35,7 @@ Anteprima della build: http://127.0.0.1:4174/. Le pagine sono `/`, `/trattamenti
 
 Gli HTML sono generati: modificare il generatore e usare `npm run pages` o riavviare `npm run dev`. I file in `src/` hanno aggiornamento automatico durante lo sviluppo. Nessun framework UI o servizio esterno è necessario a runtime. Font e immagini sono locali.
 
-La scena usa un'unica timeline reversibile. Su touch la transizione a iride usa CSS e scroll nativo; su desktop il modulo WebGL viene caricato al primo scorrimento. Pausa e preferenza di movimento ridotto rimuovono il pin e mantengono una copertina statica. In assenza di WebGL funziona la transizione CSS.
+La scena usa un'unica timeline reversibile. Su mobile la rivelazione a sette petali usa CSS e scroll nativo, con il centro calcolato sul ritaglio del fiore; su desktop il modulo WebGL viene caricato al primo scorrimento. Pausa e preferenza di movimento ridotto rimuovono il pin e mantengono una copertina statica. In assenza di WebGL funziona la transizione CSS.
 
 ## Verifica
 

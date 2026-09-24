@@ -70,3 +70,9 @@ Verificati 360×780, 390×844, 430×932 e 390×640 px: immagine finale e sfondo 
 Repository pubblica: `https://github.com/Fog-coder/beauty-obsession`, branch `main`. Il [workflow Pages](https://github.com/Fog-coder/beauty-obsession/actions/runs/35991217878) ha compilato e pubblicato la prima versione con esito positivo. URL: `https://fog-coder.github.io/beauty-obsession/`.
 
 Sull’URL pubblico le quattro rotte, l’asset AVIF, robots.txt e sitemap.xml hanno risposto HTTP 200. Nel browser mobile sono stati verificati menu, pagina trattamenti, selezione del servizio nei contatti, immagini caricate e assenza di overflow o errori JavaScript. Nel browser desktop la scena WebGL si è attivata e il secondo capitolo è risultato visibile. La home pubblica ha canonical corretto e non contiene `noindex`. Evidenza locale: `evidenze/live-pages.txt`.
+
+### Rivelazione mobile a petali
+
+La maschera circolare mobile è sostituita da un tracciato CSS con sette petali arrotondati, coerenti con i sette lobi della scena desktop. Il punto di apertura tiene conto del ritaglio `object-fit: cover` del poster e si avvicina al cuore del fiore. Il raggio finale comprende anche gli angoli nelle rientranze tra i petali.
+
+Verifica su Chromium con viewport mobile emulate 360×780, 390×844, 430×932 e 390×640 px: tracciato a petali attivo, quattro angoli inclusi nella maschera finale, sfondo e ritratto a piena altezza, nessun overflow o errore JavaScript. Il ritorno all’inizio richiude completamente la maschera. Controllati visivamente tre momenti intermedi e la scena finale a 390×844. Scena WebGL desktop e movimento ridotto verificati. Build Pages e controllo collegamenti delle quattro pagine superati. Evidenze locali: `evidenze/mobile-petali.txt`, `evidenze/petali-fase-*.jpg`, `evidenze/petali-completa.jpg`.
