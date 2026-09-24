@@ -58,3 +58,9 @@ Il JavaScript principale è circa 57 KB gzip; il modulo grafico dinamico circa 2
 - `evidenze-reference/`: raccolta di osservazioni e screenshot delle reference visitate.
 
 La verifica tecnica e la revisione visiva dell’agente sono completate. La pubblicazione su Pages segue una seconda build con prefisso `/beauty-obsession/`, verificata sulle quattro rotte e nei browser. Questo documento non attribuisce al cliente un’approvazione estetica.
+
+## Pubblicazione verificata
+
+Repository pubblica: `https://github.com/Fog-coder/beauty-obsession`, branch `main`. Il [workflow Pages](https://github.com/Fog-coder/beauty-obsession/actions/runs/35991217878) ha compilato e pubblicato la prima versione con esito positivo. URL: `https://fog-coder.github.io/beauty-obsession/`.
+
+Sull’URL pubblico le quattro rotte, l’asset AVIF, robots.txt e sitemap.xml hanno risposto HTTP 200. Nel browser mobile sono stati verificati menu, pagina trattamenti, selezione del servizio nei contatti, immagini caricate e assenza di overflow o errori JavaScript. Nel browser desktop la scena WebGL si è attivata e il secondo capitolo è risultato visibile. La home pubblica ha canonical corretto e non contiene `noindex`. Evidenza locale: `evidenze/live-pages.txt`.

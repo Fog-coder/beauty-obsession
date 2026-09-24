@@ -1,7 +1,7 @@
 # Beauty Obsession · Il tempo di rifiorire
 
 ## Incarico e criterio di riuscita
-Sito completo del centro Beauty Obsession, con la qualità visiva e il movimento delle reference indicate dall'utente. Le pagine devono restare leggibili, navigabili e utilizzabili anche senza animazioni. L'incarico autorizza la realizzazione locale. Nessuna pubblicazione o contatto commerciale.
+Sito completo del centro Beauty Obsession, con la qualità visiva e il movimento delle reference indicate dall'utente. Le pagine devono restare leggibili, navigabili e utilizzabili anche senza animazioni. Il sito è pubblicato su GitHub Pages su richiesta dell'utente. Nessun contatto commerciale è stato effettuato.
 
 ## Fonti
 Ricerca in ../ricerca, processo PDF in ../docs. Analisi live delle dieci reference in evidenze-reference; codice delle due repo locali letto in sola lettura. Dai progetti A Center riprendiamo lo schema di una timeline centrale, il pin in ordine di pagina, il caricamento progressivo, la navigazione accessibile e lo scroll nativo su touch. Non copiamo contenuti, modelli, fotografie o marchi delle reference.
