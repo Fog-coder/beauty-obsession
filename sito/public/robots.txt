@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://fog-coder.github.io/beauty-obsession/sitemap.xml
