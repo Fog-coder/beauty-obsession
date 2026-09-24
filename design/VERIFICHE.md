@@ -61,6 +61,12 @@ La verifica tecnica e la revisione visiva dell’agente sono completate. La pubb
 
 ## Pubblicazione verificata
 
+### Correzione della scena mobile
+
+Il ritaglio del fiore era applicato al contenitore condiviso con il ritratto: a 390×844 px il ritratto iniziava a y=143 px, mentre la rotazione del fiore lo estendeva fino a y=42 px. Il ritaglio è stato spostato sul solo poster del fiore, mantenendone posizione e dimensioni; il ritratto e la superficie opaca di rivelazione occupano ora tutta la scena.
+
+Verificati 360×780, 390×844, 430×932 e 390×640 px: immagine finale e sfondo coprono il contenitore dall’alto al basso, la maschera aperta comprende tutti gli angoli e il ritorno allo scroll iniziale ripristina il fiore alle dimensioni originali. Nessun overflow o errore JavaScript. Verificate anche scena WebGL desktop e modalità movimento ridotto. Evidenze locali: `evidenze/mobile-hero-prima.txt`, `evidenze/mobile-hero-dopo.txt` e relativi screenshot.
+
 Repository pubblica: `https://github.com/Fog-coder/beauty-obsession`, branch `main`. Il [workflow Pages](https://github.com/Fog-coder/beauty-obsession/actions/runs/35991217878) ha compilato e pubblicato la prima versione con esito positivo. URL: `https://fog-coder.github.io/beauty-obsession/`.
 
 Sull’URL pubblico le quattro rotte, l’asset AVIF, robots.txt e sitemap.xml hanno risposto HTTP 200. Nel browser mobile sono stati verificati menu, pagina trattamenti, selezione del servizio nei contatti, immagini caricate e assenza di overflow o errori JavaScript. Nel browser desktop la scena WebGL si è attivata e il secondo capitolo è risultato visibile. La home pubblica ha canonical corretto e non contiene `noindex`. Evidenza locale: `evidenze/live-pages.txt`.
