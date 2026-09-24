@@ -31,6 +31,7 @@ Anteprima della build: http://127.0.0.1:4174/. Le pagine sono `/`, `/trattamenti
 | `src/main.js` | GSAP/ScrollTrigger, menu, recensioni, dettagli e compositore |
 | `src/bloom.js` | Superficie WebGL nativa della copertina desktop |
 | `scripts/optimize-assets.mjs` | Esportazione degli originali in WebP/AVIF |
+| `public/media/logo.svg` | Logo vettoriale con fondo trasparente e lettering in tracciati |
 
 Gli HTML sono generati: modificare il generatore e usare `npm run pages` o riavviare `npm run dev`. I file in `src/` hanno aggiornamento automatico durante lo sviluppo. Nessun framework UI o servizio esterno è necessario a runtime. Font e immagini sono locali.
 
@@ -48,7 +49,7 @@ Verifica sintassi JavaScript, risposta delle quattro pagine, immagini, collegame
 
 ## Contenuti e stato
 
-La ricerca originale è nella cartella locale `../ricerca/`; nella repository pubblica rimangono i due asset originali necessari alla build. Direzione e provenienza immagini sono in `../design/DIREZIONE.md` e `../design/ASSET.md`. Logo e ritratto provengono dai materiali del centro; fiore, pelle e piedi sono immagini editoriali generate per questo progetto.
+La ricerca originale è nella cartella locale `../ricerca/`; nella repository pubblica rimangono i due asset originali necessari alla build. Direzione e provenienza immagini sono in `../design/DIREZIONE.md` e `../design/ASSET.md`. Il logo SVG è ricostruito dal marchio raster del centro; il ritratto proviene dal profilo ufficiale. Fiore, pelle e piedi sono immagini editoriali generate per questo progetto.
 
 Il compositore prepara e copia un messaggio locale. Il visitatore apre Instagram e lo invia personalmente; disponibilità e prenotazione sono concordate con il centro. Il sito non invia moduli, non raccoglie dati su un server e non incorpora analytics o social.
 
