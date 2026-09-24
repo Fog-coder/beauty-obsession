@@ -60,7 +60,7 @@ function setupMotion(){
   const motionButton=document.querySelector('.motion-toggle');
   if(motionButton){motionButton.setAttribute('aria-pressed',String(!motionEnabled));motionButton.setAttribute('aria-label',motionEnabled?'Pausa movimento':'Attiva movimento');motionButton.innerHTML=motionEnabled?'Pausa movimento <span aria-hidden="true">Ⅱ</span>':'Attiva movimento <span aria-hidden="true">▷</span>';}
   if(!motionEnabled)return ()=>{};
-  let bloom=null,cancelled=false;
+  let bloom=null,cancelled=false,releaseReveal=null;
   let ticker;
   if(fine()){lenis=new Lenis({duration:1.12,smoothWheel:true,syncTouch:false});lenis.on('scroll',ScrollTrigger.update);ticker=t=>lenis?.raf(t*1000);gsap.ticker.add(ticker);gsap.ticker.lagSmoothing(0);}
   const context=gsap.context(()=>{
@@ -81,7 +81,19 @@ function setupMotion(){
       const clipPath=progress=>mobile
         ?petalPath(petalGeometry(hero.querySelector('.hero-stage'),hero.querySelector('.hero-poster')),progress)
         :`circle(${progress*140}% at 72% 50%)`;
-      const tl=gsap.timeline({defaults:{ease:'none'},scrollTrigger:{id:'bloom-story',trigger:hero,start:'top top',end:()=>`+=${innerHeight*(innerWidth<768?1.75:2.35)}`,pin:'.hero-stage',scrub:.65,anticipatePin:1,invalidateOnRefresh:true,onUpdate:st=>{if(st.progress>0)requestScene();const accessible=st.progress>.64;chapter.setAttribute('aria-hidden',String(!accessible));chapterLink.tabIndex=accessible?0:-1;}}});
+      const portrait=hero.querySelector('.hero-destination img');
+      const playhead={progress:0};
+      // A clipped lazy image may arrive after the reveal has already finished.
+      // Keep the flower/interlude visible until the portrait is decoded, then
+      // catch up smoothly rather than inserting the image into an open mask.
+      const gate={limit:mobile?.32:1};
+      const tl=gsap.timeline({paused:true,defaults:{ease:'none'}});
+      const render=()=>{
+        const progress=Math.min(playhead.progress,gate.limit);
+        tl.progress(progress);
+        const accessible=progress>.64;
+        chapter.setAttribute('aria-hidden',String(!accessible));chapterLink.tabIndex=accessible?0:-1;
+      };
       tl.to(state,{progress:1,duration:1,onUpdate:()=>bloom?.setProgress(state.progress)},0)
         .to('.hero-content',{y:-60,autoAlpha:0,duration:.14},.04)
         .to('.hero-foot',{autoAlpha:0,duration:.08},.06)
@@ -92,6 +104,17 @@ function setupMotion(){
         .fromTo('.hero-destination',{clipPath:()=>clipPath(0)},{clipPath:()=>clipPath(1),duration:.48},.32);
       // A meaningful visual fallback also works if WebGL is unavailable.
       tl.to('.hero-poster',{scale:1.22,rotation:4,duration:.8},0);
+      gsap.to(playhead,{progress:1,duration:1,ease:'none',onUpdate:render,scrollTrigger:{id:'bloom-story',trigger:hero,start:'top top',end:()=>`+=${innerHeight*(mobile?1.75:2.35)}`,pin:'.hero-stage',scrub:.65,anticipatePin:1,invalidateOnRefresh:true,onUpdate:st=>{if(st.progress>0)requestScene();},onRefresh:()=>{tl.progress(0).invalidate();render();}}});
+      if(mobile){
+        let decoded=false;
+        const unlock=()=>portrait.decode().then(()=>{
+          if(cancelled||decoded)return;decoded=true;
+          releaseReveal=gsap.to(gate,{limit:1,duration:.65,ease:'none',onUpdate:render});
+        }).catch(()=>{ /* A responsive source change retries on load. */ });
+        portrait.addEventListener('load',unlock);
+        contextCleanups.push(()=>portrait.removeEventListener('load',unlock));
+        unlock();
+      }
       if(scrollY<15){gsap.from('.hero-content h1 span,.hero-content h1 em',{y:45,duration:1.35,stagger:.11,clearProps:'all'});gsap.from('.hero-content>.eyebrow,.hero-bottom',{y:15,duration:1,delay:.2,stagger:.1,clearProps:'all'});gsap.from(art,{scale:1.035,duration:1.9,clearProps:'transform'});}
     }
     // All subsequent triggers are created after the hero pin.
@@ -110,7 +133,7 @@ function setupMotion(){
     });
   });
   document.fonts.ready.then(()=>{if(!cancelled)ScrollTrigger.refresh();});
-  return ()=>{cancelled=true;bloom?.dispose();context.revert();contextCleanups.splice(0).forEach(fn=>fn());if(ticker)gsap.ticker.remove(ticker);lenis?.destroy();lenis=null;};
+  return ()=>{cancelled=true;releaseReveal?.kill();bloom?.dispose();context.revert();contextCleanups.splice(0).forEach(fn=>fn());if(ticker)gsap.ticker.remove(ticker);lenis?.destroy();lenis=null;};
 }
 const contextCleanups=[];
 disposeMotion=setupMotion();
