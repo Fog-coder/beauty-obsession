@@ -61,26 +61,6 @@ La verifica tecnica e la revisione visiva dell’agente sono completate. La pubb
 
 ## Pubblicazione verificata
 
-### Correzione della scena mobile
-
-Il ritaglio del fiore era applicato al contenitore condiviso con il ritratto: a 390×844 px il ritratto iniziava a y=143 px, mentre la rotazione del fiore lo estendeva fino a y=42 px. Il ritaglio è stato spostato sul solo poster del fiore, mantenendone posizione e dimensioni; il ritratto e la superficie opaca di rivelazione occupano ora tutta la scena.
-
-Verificati 360×780, 390×844, 430×932 e 390×640 px: immagine finale e sfondo coprono il contenitore dall’alto al basso, la maschera aperta comprende tutti gli angoli e il ritorno allo scroll iniziale ripristina il fiore alle dimensioni originali. Nessun overflow o errore JavaScript. Verificate anche scena WebGL desktop e modalità movimento ridotto. Evidenze locali: `evidenze/mobile-hero-prima.txt`, `evidenze/mobile-hero-dopo.txt` e relativi screenshot.
-
 Repository pubblica: `https://github.com/Fog-coder/beauty-obsession`, branch `main`. Il [workflow Pages](https://github.com/Fog-coder/beauty-obsession/actions/runs/35991217878) ha compilato e pubblicato la prima versione con esito positivo. URL: `https://fog-coder.github.io/beauty-obsession/`.
 
 Sull’URL pubblico le quattro rotte, l’asset AVIF, robots.txt e sitemap.xml hanno risposto HTTP 200. Nel browser mobile sono stati verificati menu, pagina trattamenti, selezione del servizio nei contatti, immagini caricate e assenza di overflow o errori JavaScript. Nel browser desktop la scena WebGL si è attivata e il secondo capitolo è risultato visibile. La home pubblica ha canonical corretto e non contiene `noindex`. Evidenza locale: `evidenze/live-pages.txt`.
-
-### Rivelazione mobile a petali
-
-La maschera circolare mobile è sostituita da un tracciato CSS con sette petali arrotondati, coerenti con i sette lobi della scena desktop. Il punto di apertura tiene conto del ritaglio `object-fit: cover` del poster e si avvicina al cuore del fiore. Il raggio finale comprende anche gli angoli nelle rientranze tra i petali.
-
-Verifica su Chromium con viewport mobile emulate 360×780, 390×844, 430×932 e 390×640 px: tracciato a petali attivo, quattro angoli inclusi nella maschera finale, sfondo e ritratto a piena altezza, nessun overflow o errore JavaScript. Il ritorno all’inizio richiude completamente la maschera. Controllati visivamente tre momenti intermedi e la scena finale a 390×844. Scena WebGL desktop e movimento ridotto verificati. Build Pages e controllo collegamenti delle quattro pagine superati. Evidenze locali: `evidenze/mobile-petali.txt`, `evidenze/petali-fase-*.jpg`, `evidenze/petali-completa.jpg`.
-
-### Caricamento del ritratto e rivelazione mobile
-
-Riprodotto sul sito pubblicato un caso non coperto dalla precedente verifica: trattenendo la risposta della foto della ragazza e scorrendo subito, la maschera si apriva su uno sfondo vuoto e il ritratto appariva in seguito, di colpo. Il test della maschera chiusa prima della disponibilità dell’immagine falliva sulla versione `a26c7f5`.
-
-Il ritratto della hero ora viene richiesto subito. Su mobile la scena si ferma al momento precedente alla rivelazione finché `HTMLImageElement.decode()` non completa; poi raggiunge gradualmente il progresso dello scroll. La disponibilità della foto controlla anche il secondo capitolo, mantenendo insieme testo e immagine. Un cambio della sorgente responsive ritenta la decodifica al caricamento; pausa e smontaggio annullano il recupero.
-
-Verifica automatizzata su Chromium e WebKit locali, viewport mobile emulata 390×844: foto trattenuta, maschera completamente chiusa e secondo capitolo nascosto; dopo lo sblocco, apertura distribuita su oltre otto fotogrammi distinti, posizione del ritratto stabile e copertura finale dei quattro angoli. Controllati ritorno indietro, pausa/ripresa e movimento ridotto. Verificato anche il passaggio da desktop 1440×900 a mobile. Non è una prova su iPhone fisico. Evidenze locali: `evidenze/petal-loading-red.txt`, `evidenze/petal-loading-green.txt`, `evidenze/petal-resize-green.txt` e screenshot `*-loading-*.png`.

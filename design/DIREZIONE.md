@@ -7,7 +7,7 @@ Sito completo del centro Beauty Obsession, con la qualità visiva e il movimento
 Ricerca in ../ricerca, processo PDF in ../docs. Analisi live delle dieci reference in evidenze-reference; codice delle due repo locali letto in sola lettura. Dai progetti A Center riprendiamo lo schema di una timeline centrale, il pin in ordine di pagina, il caricamento progressivo, la navigazione accessibile e lo scroll nativo su touch. Non copiamo contenuti, modelli, fotografie o marchi delle reference.
 
 ## Direzione
-Sito editoriale per un pubblico locale interessato a estetica e benessere. VARIANCE 9, MOTION 8, DENSITY 3. Avorio #F7EEE8, oro #A57E44, bruno #382A20: la famiglia cromatica viene dalla ricerca, non da un preset. Titoli Cormorant Garamond, corpo Manrope, font locali. Logo ricostruito in SVG dal raster autentico, conservando lettering e ornamenti. Firma visiva: tipografia grande e sottile, bordi quasi invisibili, immagini a vivo, ritmi asimmetrici. Un unico sistema condiviso su quattro pagine.
+Sito editoriale per un pubblico locale interessato a estetica e benessere. VARIANCE 9, MOTION 8, DENSITY 3. Avorio #F7EEE8, oro #A57E44, bruno #382A20: la famiglia cromatica viene dalla ricerca, non da un preset. Titoli Cormorant Garamond, corpo Manrope, font locali. Logo raster autentico, conservato senza ridisegno. Firma visiva: tipografia grande e sottile, bordi quasi invisibili, immagini a vivo, ritmi asimmetrici. Un unico sistema condiviso su quattro pagine.
 
 ## Architettura
 - /: copertina cinematica, manifesto, mondi dei trattamenti, specializzazione piedi, fiducia, invito.
@@ -16,7 +16,7 @@ Sito editoriale per un pubblico locale interessato a estetica e benessere. VARIA
 - /contatti/: sede, orari verificati, accessibilità, canali ufficiali e compositore di richiesta da copiare facoltativamente su Instagram. Nessun invio automatico o prenotazione simulata.
 
 ## Esperienza protagonista
-Un'opera botanica in oro e seta si avvicina e si trasforma in un'immagine editoriale di cura. Su desktop una superficie WebGL applica rifrazione, distorsione radiale e rivelazione progressiva alla scena; GSAP coordina scena e testo tramite un solo progresso. I due capitoli sono reversibili con lo scroll. Il cursore influenza delicatamente la superficie. Mobile: ritaglio verticale, rivelazione CSS a sette petali centrata sul cuore del fiore, corsa più breve e touch nativo. Con WebGL assente resta la trasformazione CSS. Con movimento ridotto o pausa richiesta restano poster e contenuti statici, senza pin. Il renderer desktop viene importato al primo scorrimento, si ferma fuori viewport e a scheda nascosta e libera le risorse alla disattivazione.
+Un'opera botanica in oro e seta si avvicina e si trasforma in un'immagine editoriale di cura. Su desktop una superficie WebGL applica rifrazione, distorsione radiale e rivelazione progressiva alla scena; GSAP coordina scena e testo tramite un solo progresso. I due capitoli sono reversibili con lo scroll. Il cursore influenza delicatamente la superficie. Mobile: ritaglio verticale, trasformazione CSS a iride, corsa più breve e touch nativo. Con WebGL assente resta la trasformazione CSS. Con movimento ridotto o pausa richiesta restano poster e contenuti statici, senza pin. Il renderer desktop viene importato al primo scorrimento, si ferma fuori viewport e a scheda nascosta e libera le risorse alla disattivazione.
 
 ## Processo PDF applicato
 1. Vite, GSAP + ScrollTrigger e Lenis su pointer fine.

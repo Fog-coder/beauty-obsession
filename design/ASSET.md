@@ -4,8 +4,7 @@ Data di realizzazione: 24 settembre 2026. Tutti gli asset del sito sono serviti 
 
 | Asset | Origine | Uso e significato |
 | --- | --- | --- |
-| `logo.svg` | Ricostruzione da `ricerca/media/logo-ritaglio.png` | Lettering e ornamenti convertiti in tracciati; dettagli sottili ricostruiti, fondo trasparente. File vettoriale ricreato su richiesta, non originale fornito dal centro |
-| `logo.webp` | `ricerca/media/logo-ritaglio.png` | Esportazione raster conservata come riferimento |
+| `logo.webp` | `ricerca/media/logo-ritaglio.png` | Marchio autentico, ridimensionato senza ridisegno |
 | `gabriela.webp`, `gabriela-640.webp` | `ricerca/media/team-avatar-instagram.jpg` | Ritratto del profilo ufficiale raccolto nella ricerca |
 | `fiore.avif`, `fiore.webp`, `fiore-640.webp` | `design/asset-originali/fiore.png`, generato con image_gen | Opera botanica editoriale; protagonista della copertina, non un oggetto del centro |
 | `pelle.webp`, `pelle-640.webp` | `design/asset-originali/pelle.png`, generato con image_gen | Modella sintetica adulta per rappresentare la cura della pelle, non cliente né risultato di un trattamento |
@@ -26,16 +25,3 @@ La ricerca documenta le URL originarie dei materiali reali. I tre originali gene
 ## Esportazione
 
 `cd sito && node scripts/optimize-assets.mjs` riproduce gli asset web. Immagini WebP in due dimensioni (640 px e fino a 1440 px, senza ingrandire gli originali); copertina anche AVIF a 1440 px. Logo WebP largo 240 px. Il ritratto ufficiale resta al massimo alla sua risoluzione originale di 1024 px. I font sono inclusi dalla build e accompagnati dalle licenze in `public/licenses/`.
-
-## Logo vettoriale
-
-Sorgente con gruppi nominati: `design/asset-originali/logo-beauty-obsession.svg`. Versione ottimizzata usata in header, footer e favicon: `sito/public/media/logo.svg`. Entrambe usano soltanto tracciati e colori, senza immagini incorporate, font esterni o sfondo. Il lettering originale è ricalcato; linee e piccolo fregio inferiore sono ripuliti geometricamente. Colori: bruno `#49392A`, oro `#A78348`, oro chiaro `#B79A60` per i dettagli fini.
-
-La ricostruzione è riproducibile dalla radice del progetto:
-
-```sh
-uv run --no-project --with vtracer==0.6.15 --with pillow==12.3.0 --with numpy==2.5.3 python sito/scripts/vectorize-logo.py ricerca/media/logo-ritaglio.png design/asset-originali/logo-beauty-obsession.svg
-npx svgo --config sito/scripts/svgo-logo.config.mjs --input design/asset-originali/logo-beauty-obsession.svg --output sito/public/media/logo.svg
-```
-
-Confronto visivo effettuato con il raster originale e a dimensione doppia; verificata la trasparenza e l’assenza di elementi `image`/`text` nell’SVG.
